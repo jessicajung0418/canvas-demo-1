@@ -5,6 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>画板</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #canvas {
+        height: 100vh;
+        border: 1px solid red;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <div id="canvas"></div>
+    <script>
+      canvas.onclick = (e) => {
+        // 通过log可以等到鼠标点击的位置
+        console.log(e.clientX);
+        console.log(e.clientY);
+        // 在鼠标点击的位置创建一个div，但此时的div还存在内存里，页面没有出现
+        let div = document.createElement("div");
+        // 写div的样式，变成一个实心黑球，并且鼠标在黑球的中间
+        div.style.position = "absolute";
+        div.style.left = e.clientX + "px";
+        div.style.top = e.clientY + "px";
+        div.style.width = "20px";
+        div.style.height = "20px";
+        div.style.marginLeft = "-10px";
+        div.style.marginTop = "-10px";
+        div.style.borderRadius = "50%";
+        div.style.backgroundColor = "black";
+        // 添加一个子元素child，让div出现在页面中
+        canvas.appendChild(div);
+      };
+    </script>
+  </body>
 </html>
