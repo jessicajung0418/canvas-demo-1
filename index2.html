@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>用canvas画图</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      let canvas = document.getElementById("canvas");
+      //   获取文档的宽度和高度
+      canvas.width = document.documentElement.clientWidth;
+      canvas.height = document.documentElement.clientHeight;
+
+      let ctx = canvas.getContext("2d");
+      ctx.fillStyle = "rgb(200, 0, 0)";
+
+      let painting = false;
+      canvas.onmousedown = () => {
+        painting = true;
+      };
+      // onclick是鼠标点击出现一个红色正方形，把onclick改为onmousemove则是鼠标滑动画图
+      canvas.onmousemove = (e) => {
+        // -10 是为了鼠标在正方形正中间
+        if (painting === true) {
+          ctx.fillRect(e.clientX - 10, e.clientY - 10, 20, 20);
+        } else {
+          console.log("什么都不做");
+        }
+      };
+      canvas.onmouseup = () => {
+        painting = false;
+      };
+    </script>
+  </body>
+</html>

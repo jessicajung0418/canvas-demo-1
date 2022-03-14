@@ -18,8 +18,10 @@
     </style>
   </head>
   <body>
+    <!-- 此html是用JS来画图，只是一个案例而已，画图还是的用canvas工具 -->
     <div id="canvas"></div>
     <script>
+      // onclick是鼠标点击出现一个黑心圆球，把onclick改为onmousemove则是鼠标滑动画图
       canvas.onclick = (e) => {
         // 通过log可以等到鼠标点击的位置
         console.log(e.clientX);
